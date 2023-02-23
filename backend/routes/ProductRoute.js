@@ -27,9 +27,10 @@ router
 
 router.route('/product/review').post(isAuthenticatedUser, createProductReview)
 
+router.route('/reviews').get(getSingleProductReviews)
+
 router
-  .route('/reviews')
-  .get(getSingleProductReviews)
+  .route('/reviews/:id')
   .delete(isAuthenticatedUser, authorizeRoles('admin'), deleteReview)
 
 module.exports = router
